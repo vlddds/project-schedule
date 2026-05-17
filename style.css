@@ -1,0 +1,147 @@
+s{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial;
+}
+
+body {
+    background: #f4f6fb;
+    color: #222;
+}
+
+header {
+    background: #2b59ff;
+    padding: 15px 30px;
+    color: white;
+}
+
+.menu {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+}
+
+.menu-list {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+.menu-link {
+    text-decoration: none;
+    color: white;
+    padding: 6px 10px;
+    border-radius: 6px;
+    transition: 0.3s;
+}
+
+.menu-link:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: scale(1.05);
+}
+
+.container {
+    max-width: 1000px;
+    margin: 30px auto;
+    padding: 20px;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+#schedule {
+    display: flex;
+    gap: 20px;
+}
+
+#days {
+    width: 200px;
+    list-style: none;
+    background: white;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+#days li {
+    padding: 10px;
+    margin: 5px 0;
+    background: #f0f2ff;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+#days li:hover {
+    background: #2b59ff;
+    color: white;
+}
+
+#schedule-details {
+    flex: 1;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+#classes {
+    list-style: none;
+    margin-bottom: 20px;
+}
+
+#classes li {
+    padding: 10px;
+    background: #eef2ff;
+    margin-bottom: 8px;
+    border-radius: 8px;
+}
+
+input, select {
+    width: 100%;
+    padding: 10px;
+    margin: 8px 0;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+}
+
+button {
+    width: 100%;
+    padding: 10px;
+    background: #2b59ff;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover {
+    background: #1f45d6;
+}
+
+#homework-list li {
+    padding: 8px;
+    background: #fff3cd;
+    margin-bottom: 5px;
+    border-radius: 8px;
+}
+
+footer {
+    text-align: center;
+    padding: 20px;
+    margin-top: 40px;
+    background: #2b59ff;
+    color: white;
+}
+
