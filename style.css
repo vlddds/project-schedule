@@ -1,154 +1,179 @@
-s{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: Arial;
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Segoe UI', sans-serif;
 }
 
-body {
-    background: #f4f6fb;
-    color: #222;
+body{
+    background:linear-gradient(135deg,#eef2ff,#dbeafe);
+    color:#222;
 }
 
-header {
-    background: #2b59ff;
-    padding: 15px 30px;
-    color: white;
+header{
+    background:linear-gradient(90deg,#2b59ff,#4f7cff);
+    padding:20px 30px;
+    color:white;
+    box-shadow:0 4px 15px rgba(0,0,0,0.15);
 }
 
-.menu {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+.menu{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
 }
 
-.logo {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    text-decoration: none;
-    color: white;
-    font-weight: bold;
+.logo{
+    text-decoration:none;
+    color:white;
+    font-weight:bold;
+    font-size:20px;
 }
 
-.menu-list {
-    list-style: none;
-    display: flex;
-    gap: 20px;
+.menu-list{
+    list-style:none;
+    display:flex;
+    gap:20px;
 }
 
-.menu-link {
-    text-decoration: none;
-    color: white;
-    padding: 6px 10px;
-    border-radius: 6px;
-    transition: 0.3s;
+.menu-link{
+    text-decoration:none;
+    color:white;
+    padding:6px 10px;
+    border-radius:6px;
+    transition:.3s;
 }
 
-.menu-link:hover {
-    background: rgba(255, 255, 255, 0.2);
-    transform: scale(1.05);
+.menu-link:hover{
+    background:rgba(255,255,255,0.2);
 }
 
-.container {
-    max-width: 1000px;
-    margin: 30px auto;
-    padding: 20px;
+.container{
+    max-width:1000px;
+    margin:30px auto;
+    padding:20px;
 }
 
-h1 {
-    text-align: center;
-    margin-bottom: 20px;
+.schedule-image{
+    display:block;
+    margin:0 auto 25px;
+    width:100%;
+    max-width:700px;
+    height:300px;
+    object-fit:cover;
+    border-radius:20px;
+    box-shadow:0 10px 30px rgba(0,0,0,0.15);
 }
 
-#schedule {
-    display: flex;
-    gap: 20px;
+h1{
+    text-align:center;
+    font-size:2rem;
 }
 
-#days {
-    width: 200px;
-    list-style: none;
-    background: white;
-    padding: 10px;
-    border-radius: 10px;
+.subtitle{
+    text-align:center;
+    margin-bottom:20px;
+    color:#555;
 }
 
-#days li {
-    padding: 10px;
-    margin: 5px 0;
-    background: #f0f2ff;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: 0.3s;
+#schedule{
+    display:flex;
+    gap:20px;
 }
 
-#days li:hover {
-    background: #2b59ff;
-    color: white;
+#days{
+    width:200px;
+    list-style:none;
+    background:white;
+    padding:10px;
+    border-radius:12px;
+    box-shadow:0 10px 25px rgba(0,0,0,0.08);
 }
 
-#schedule-details {
-    flex: 1;
-    background: white;
-    padding: 20px;
-    border-radius: 10px;
+#days li{
+    padding:10px;
+    margin:5px 0;
+    background:#f0f2ff;
+    border-radius:8px;
+    cursor:pointer;
+    transition:.3s;
 }
 
-#classes {
-    list-style: none;
-    margin-bottom: 20px;
+#days li:hover{
+    background:#2b59ff;
+    color:white;
 }
 
-#classes li {
-    padding: 10px;
-    background: #eef2ff;
-    margin-bottom: 8px;
-    border-radius: 8px;
+#days li.active{
+    background:#2b59ff;
+    color:white;
+    font-weight:bold;
 }
 
-input, select {
-    width: 100%;
-    padding: 10px;
-    margin: 8px 0;
-    border: 1px solid #ccc;
-    border-radius: 8px;
+/* DETAILS */
+#schedule-details{
+    flex:1;
+    background:white;
+    padding:20px;
+    border-radius:12px;
+    box-shadow:0 10px 25px rgba(0,0,0,0.08);
 }
 
-button {
-    width: 100%;
-    padding: 10px;
-    background: #2b59ff;
-    color: white;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: 0.3s;
+#day-name{
+    color:#2b59ff;
+    margin-bottom:15px;
 }
 
-button:hover {
-    background: #1f45d6;
+#classes li,
+#homework-list li{
+    padding:10px;
+    border-radius:8px;
+    margin-bottom:8px;
+    transition:.3s;
 }
 
-#homework-list li {
-    padding: 8px;
-    background: #fff3cd;
-    margin-bottom: 5px;
-    border-radius: 8px;
+#classes li{
+    background:#eef2ff;
 }
 
-footer {
-    text-align: center;
-    padding: 20px;
-    margin-top: 40px;
-    background: #2b59ff;
-    color: white;
+#homework-list li{
+    background:#fff3cd;
 }
 
-.schedule-image {
-    display: block;
-    margin: 0 auto 20px;
-    max-width: 100%;
-    border-radius: 30px;
-    width: 200px;
+#classes li:hover,
+#homework-list li:hover{
+    transform:translateX(5px);
+}
+
+input, select{
+    width:100%;
+    padding:10px;
+    margin:8px 0;
+    border:1px solid #ccc;
+    border-radius:8px;
+}
+
+button{
+    width:100%;
+    padding:12px;
+    background:linear-gradient(90deg,#2b59ff,#5f84ff);
+    color:white;
+    border:none;
+    border-radius:10px;
+    cursor:pointer;
+    font-weight:bold;
+    transition:.3s;
+}
+
+button:hover{
+    transform:translateY(-2px);
+    box-shadow:0 5px 15px rgba(43,89,255,.3);
+}
+
+footer{
+    text-align:center;
+    padding:20px;
+    margin-top:40px;
+    background:#2b59ff;
+    color:white;
 }
