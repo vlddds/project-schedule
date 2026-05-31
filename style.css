@@ -26,7 +26,7 @@ header{
 
 .logo{
     text-decoration:none;
-    color:white;
+    color:#7a4a0a;
     font-weight:bold;
     font-size:20px;
 }
@@ -39,7 +39,7 @@ header{
 
 .menu-link{
     text-decoration:none;
-    color:white;
+    color:#7a4a0a;
     padding:6px 10px;
     border-radius:6px;
     transition:.3s;
