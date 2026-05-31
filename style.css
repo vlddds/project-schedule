@@ -6,12 +6,12 @@
 }
 
 body{
-    background:linear-gradient(135deg,#eef2ff,#dbeafe);
+    background:linear-gradient(135deg,#ffebd1,#ffe3be);
     color:#222;
 }
 
 header{
-    background:linear-gradient(90deg,#2b59ff,#4f7cff);
+    background:linear-gradient(90deg,#EADBC8,#EADBC8);
     padding:20px 30px;
     color:white;
     box-shadow:0 4px 15px rgba(0,0,0,0.15);
@@ -100,12 +100,12 @@ h1{
 }
 
 #days li:hover{
-    background:#2b59ff;
+    background:#9be7c6;
     color:white;
 }
 
 #days li.active{
-    background:#2b59ff;
+    background:#9be7c6;
     color:white;
     font-weight:bold;
 }
@@ -120,7 +120,7 @@ h1{
 }
 
 #day-name{
-    color:#2b59ff;
+    color:#4fdda0;
     margin-bottom:15px;
 }
 
@@ -133,11 +133,11 @@ h1{
 }
 
 #classes li{
-    background:#eef2ff;
+    background:#DBC8EA;
 }
 
 #homework-list li{
-    background:#fff3cd;
+    background:#DBC8EA;
 }
 
 #classes li:hover,
@@ -156,7 +156,7 @@ input, select{
 button{
     width:100%;
     padding:12px;
-    background:linear-gradient(90deg,#2b59ff,#5f84ff);
+    background:linear-gradient(90deg,#9be7c6,#C8EADB);
     color:white;
     border:none;
     border-radius:10px;
@@ -174,6 +174,6 @@ footer{
     text-align:center;
     padding:20px;
     margin-top:40px;
-    background:#2b59ff;
+    background:#EADBC8;
     color:white;
 }
