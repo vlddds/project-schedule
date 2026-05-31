@@ -177,3 +177,12 @@ footer{
     background:#EADBC8;
     color:white;
 }
+p{
+    text-align: center;
+}
+
+.schedule-image{
+    width: 300px;
+    height: 260px;
+    border-radius: 100px;
+}
