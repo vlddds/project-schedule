@@ -9,11 +9,10 @@ let schedule = {
 };
 
 let cookies = document.cookie.split('; ');
-for (let i = 0; i < cookies.length; i += 1) {
+for (let i = 0; i < cookies.length; i++) {
     let cookie = cookies[i].split('=');
     if (cookie[0] === 'schedule') {
         schedule = JSON.parse(cookie[1]);
-        break;
     }
 }
 
@@ -21,82 +20,85 @@ function setCookie(name, value, days) {
     let expires = "";
     if (days) {
         let date = new Date();
-        date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+        date.setTime(date.getTime() + days * 24 * 60 * 60 * 1000);
         expires = "; expires=" + date.toUTCString();
     }
-    document.cookie = name + "=" + (value || "") + expires + "; path=/";
+    document.cookie = `${name}=${value}${expires}; path=/`;
 }
 
-for (let i = 0; i < days.length; i++) {
-    days[i].addEventListener('click', function() {
-        let selectedDay = days[i].innerHTML;
-        highlightActiveDay(days[i]);
-        updateClassList(selectedDay);
-        updateHomeworkList(selectedDay);
-        setupAddHomeworkButton(selectedDay);
-        setupAddClassButton(selectedDay);
-    });
-}
-
-function highlightActiveDay(activeDay) {
-    for (let i = 0; i < days.length; i++) {
-        days[i].classList.remove('active');
-    }
-    activeDay.classList.add('active');
+function highlightActiveDay(active) {
+    days.forEach(d => d.classList.remove('active'));
+    active.classList.add('active');
 }
 
 function updateClassList(day) {
-    document.querySelector('#day-name').innerHTML = day;
+    document.querySelector('#day-name').textContent = day;
+
     let classList = document.querySelector('#classes');
     classList.innerHTML = '';
+
     let subjectSelect = document.querySelector('#subject-select');
-    subjectSelect.innerHTML = '<option value="" disabled selected>Виберіть предмет</option>';
-    for (let k = 0; k < schedule[day].classes.length; k++) {
-        let classItem = schedule[day].classes[k];
-        classList.innerHTML += `<li>${k + 1}. ${classItem}</li>`;
-        let option = `<option value="${classItem}">${classItem}</option>`;
-        subjectSelect.innerHTML += option;
-    }
+    subjectSelect.innerHTML = '<option disabled selected>Виберіть предмет</option>';
+
+    schedule[day].classes.forEach((item, i) => {
+        classList.innerHTML += `<li>${i + 1}. ${item}</li>`;
+        subjectSelect.innerHTML += `<option value="${item}">${item}</option>`;
+    });
 }
 
 function updateHomeworkList(day) {
     let homeworkList = document.querySelector('#homework-list');
     homeworkList.innerHTML = '';
+
     for (let subject in schedule[day].homework) {
-        if (schedule[day].homework.hasOwnProperty(subject)) {
-            let hw = schedule[day].homework[subject];
-            let completed = hw.completed ? 'checked' : '';
-            homeworkList.innerHTML += `<li><input type="checkbox"> ${subject}: ${hw.description}</li>`;
-        }
+        let hw = schedule[day].homework[subject];
+
+        homeworkList.innerHTML += `
+            <li>
+                <input type="checkbox" ${hw.completed ? "checked" : ""}>
+                ${subject}: ${hw.description}
+            </li>
+        `;
     }
 }
 
-function setupAddHomeworkButton(day) {
-    let addHomeworkButton = document.querySelector('#add-homework');
-    addHomeworkButton.onclick = function() {
-        let selectedSubject = document.querySelector('#subject-select').value;
-        let newHomework = document.querySelector('#new-homework').value;
-        if (selectedSubject && newHomework) {
-            schedule[day].homework[selectedSubject] = {
-                description: newHomework,
-                completed: false
-            };
-            updateHomeworkList(day);
-            setCookie("schedule", JSON.stringify(schedule), 14);
-            document.querySelector('#new-homework').value = '';
-        }
-    };
-}
+let currentDay = "Понеділок";
 
-function setupAddClassButton(day) {
-    let addClassButton = document.querySelector('#add-class-button');
-    addClassButton.onclick = function() {
-        let newClass = document.querySelector('#new-class').value;
-        if (newClass) {
-            schedule[day].classes.push(newClass);
-            updateClassList(day);
-            document.querySelector('#new-class').value = '';
-            setCookie("schedule", JSON.stringify(schedule), 14);
-        }
+days.forEach(dayEl => {
+    dayEl.addEventListener('click', () => {
+        currentDay = dayEl.textContent;
+
+        highlightActiveDay(dayEl);
+        updateClassList(currentDay);
+        updateHomeworkList(currentDay);
+    });
+});
+
+document.querySelector('#add-class-button').addEventListener('click', () => {
+    let input = document.querySelector('#new-class');
+
+    if (!input.value.trim()) return;
+
+    schedule[currentDay].classes.push(input.value);
+    input.value = "";
+
+    updateClassList(currentDay);
+    setCookie("schedule", JSON.stringify(schedule), 14);
+});
+
+document.querySelector('#add-homework').addEventListener('click', () => {
+    let subject = document.querySelector('#subject-select').value;
+    let input = document.querySelector('#new-homework');
+
+    if (!subject || !input.value.trim()) return;
+
+    schedule[currentDay].homework[subject] = {
+        description: input.value,
+        completed: false
     };
-}
+
+    input.value = "";
+
+    updateHomeworkList(currentDay);
+    setCookie("schedule", JSON.stringify(schedule), 14);
+});
